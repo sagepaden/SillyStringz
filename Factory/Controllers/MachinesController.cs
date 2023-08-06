@@ -18,7 +18,9 @@ namespace Factory.Controllers
 
     public ActionResult Index()
     {
-      List<Machine> model = _db.Machines.ToList();
+      List<Machine> model = _db.Machines
+                          .OrderBy(machine => machine.MachineName)
+                          .ToList();
       return View(model);
     }
 
@@ -30,9 +32,16 @@ namespace Factory.Controllers
     [HttpPost]
     public ActionResult Create(Machine machine)
     {
-      _db.Machines.Add(machine);
-      _db.SaveChanges();
-      return RedirectToAction("Index");
+      if(!ModelState.IsValid)
+      {
+        return View(machine);
+      }
+      else
+      {
+        _db.Machines.Add(machine);
+        _db.SaveChanges();
+        return RedirectToAction("Index");
+      }
     }
 
     public ActionResult Delete(int id)
@@ -50,6 +59,15 @@ namespace Factory.Controllers
       return RedirectToAction("Index");
     }
 
+    [HttpPost]
+    public ActionResult DeleteJoin(int joinId)
+    {
+      EngineerMachine joinEntry = _db.EngineerMachines.FirstOrDefault(entry => entry.EngineerMachineId == joinId);
+      _db.EngineerMachines.Remove(joinEntry);
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
+
     public ActionResult AddEngineer(int id)
     {
       Machine thisMachine = _db.Machines.FirstOrDefault(machine => machine.MachineId == id);
@@ -61,11 +79,11 @@ namespace Factory.Controllers
     public ActionResult AddEngineer(Machine machine, int engineerId)
     {
       #nullable enable
-      EngineerMachine? joinEntity = _db.EngineerMachines.FirstOrDefault(join => (join.MachineId == machine.MachineId && join.EngineerId == engineerId));
+      EngineerMachine? joinEntity = _db.EngineerMachines.FirstOrDefault(join => (join.EngineerId == engineerId && join.MachineId == machine.MachineId));
       #nullable disable
       if (joinEntity == null && engineerId != 0)
       {
-        _db.EngineerMachines.Add(new EngineerMachine() { MachineId = machine.MachineId, EngineerId = engineerId});
+        _db.EngineerMachines.Add(new EngineerMachine() { EngineerId = engineerId, MachineId = machine.MachineId});
         _db.SaveChanges();
       }
       return RedirectToAction("Details", new { id = machine.MachineId });
@@ -90,9 +108,16 @@ namespace Factory.Controllers
     [HttpPost]
     public ActionResult Edit(Machine machine)
     {
-      _db.Machines.Update(machine);
-      _db.SaveChanges();
-      return RedirectToAction("Index");
+      if(!ModelState.IsValid)
+      {
+        return View(machine);
+      }
+      else
+      {
+        _db.Machines.Update(machine);
+        _db.SaveChanges();
+        return RedirectToAction("Details", new { id = machine.MachineId });
+      }
     }
   }
 }
