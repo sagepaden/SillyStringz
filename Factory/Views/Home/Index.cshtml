@@ -4,8 +4,7 @@
 
 @using Factory.Models
 
-<div class="container my-5" id="home">
-  <div class="col">
+  <div class="container">
     <h3>Machines</h3>
     @if (Model["machines"].Length == 0)
     {
@@ -18,10 +17,10 @@
       }
     </ul>
   </div>
-</div>
 
-<div class="container my-5" id="home">
-  <div class="col">
+
+
+  <div class="container">
     <h3>Engineers</h3>
     @if (Model["engineers"].Length == 0)
     {
@@ -34,9 +33,9 @@
       }
     </ul>
   </div>
-</div>
+
   
-<div class="container my-5" id="home">
+<div class="container" id="home">
   <h2>DSS: Home Page</h2>
 
   <p>@Html.ActionLink("See all Engineers", "Index", "Engineers")</p> 
