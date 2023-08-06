@@ -15,7 +15,7 @@ namespace Factory.Controllers
     {
       _db = db;
     }
-.
+
     public ActionResult Index()
     {
       List<Engineer> model = _db.Engineers.ToList();
