@@ -1,4 +1,4 @@
-# DrSillyStringz.Solution
+# SillyStringz.Solution
 
 #### _MVC web application using MySQL to manage engineers and machines_
 
@@ -21,9 +21,9 @@ _This application demonstrates the use of EFCore and MySQL to create and connect
 ## Setup/Installation Requirements
 
 **Project Set-Up**
-* _Clone "DrSillyStringz.Solution“ to your desktop_
-* _Navigate to "DrSillyStringz.Solution" directory_
-* _Create ".gitignore" in the "DrSillyStringz.Solution" directory_
+* _Clone "SillyStringz.Solution“ to your desktop_
+* _Navigate to "SillyStringz.Solution" directory_
+* _Create ".gitignore" in the "SillyStringz.Solution" directory_
 ```
 $ touch .gitignore
 ```
