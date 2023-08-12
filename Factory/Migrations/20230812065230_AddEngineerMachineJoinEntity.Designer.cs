@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Factory.Migrations
 {
     [DbContext(typeof(FactoryContext))]
-    [Migration("20230805200700_AddEngineersSpecialty")]
-    partial class AddEngineersSpecialty
+    [Migration("20230812065230_AddEngineerMachineJoinEntity")]
+    partial class AddEngineerMachineJoinEntity
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -30,9 +30,11 @@ namespace Factory.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("EngineerName")
+                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<string>("EngineerSpecialty")
+                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<int>("MachineId")
@@ -71,6 +73,7 @@ namespace Factory.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("MachineName")
+                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<int>("MachineNumber")

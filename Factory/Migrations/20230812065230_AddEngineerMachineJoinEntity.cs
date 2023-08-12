@@ -4,7 +4,7 @@
 
 namespace Factory.Migrations
 {
-    public partial class AddMachinesNumber : Migration
+    public partial class AddEngineerMachineJoinEntity : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

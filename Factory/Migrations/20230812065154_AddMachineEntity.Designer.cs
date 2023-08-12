@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Factory.Migrations
 {
     [DbContext(typeof(FactoryContext))]
-    [Migration("20230805181229_AddMachineId")]
-    partial class AddMachineId
+    [Migration("20230812065154_AddMachineEntity")]
+    partial class AddMachineEntity
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
