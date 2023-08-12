@@ -50,15 +50,11 @@ $ touch appsettings.json
 * _Navigate to "Factory" and execute command "dotnet build"_
 * _To initialize and update the migrations database, type the following commands in the terminal:_
 ```
-$ dotnet ef migrations add Initial 
 $ dotnet ef database update
 ```
-* _Add the following packages through your command line:_
+* _Restore the project by running the code below in your command line:_
 ```
-$ dotnet add package Microsoft.EntityFrameworkCore -v 6.0.0
-$ dotnet add package Pomelo.EntityFrameworkCore.MySql -v 6.0.0
-$ dotnet tool install --global dotnet-ef --version 6.0.0
-$ dotnet add package Microsoft.EntityFrameworkCore.Design -v 6.0.0
+$ dotnet restore
 ```
 * _Execute "dotnet watch run" - this should automatically open a browser to the web app_
 
